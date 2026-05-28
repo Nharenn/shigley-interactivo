@@ -1,26 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* ============================================================
+   SHIGLEY INTERACTIVO — Sistema de diseño global
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark theme (default) */
+  --bg-0: #0F1117;
+  --bg-1: #1A1D2E;
+  --bg-2: #222639;
+  --bg-3: #2A2F47;
+  --text-1: #E8EAF0;
+  --text-2: #9CA3AF;
+  --text-3: #6B7280;
+  --border: #2D3248;
+  --border-soft: #232739;
+
+  --accent: #3B82F6;
+  --accent-hover: #2563EB;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --success: #10B981;
+  --success-soft: rgba(16, 185, 129, 0.12);
+  --warning: #F59E0B;
+  --warning-soft: rgba(245, 158, 11, 0.12);
+  --danger: #EF4444;
+  --danger-soft: rgba(239, 68, 68, 0.12);
+
+  /* Colores por parte del libro */
+  --part-1: #3B82F6;
+  --part-2: #F59E0B;
+  --part-3: #22C55E;
+  --part-4: #A78BFA;
+
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow: 0 8px 24px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,0.5), 0 8px 16px rgba(0,0,0,0.3);
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --touch-target: 44px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="light"] {
+  --bg-0: #F7F8FB;
+  --bg-1: #FFFFFF;
+  --bg-2: #FFFFFF;
+  --bg-3: #F1F3F8;
+  --text-1: #0F1117;
+  --text-2: #4B5563;
+  --text-3: #9CA3AF;
+  --border: #E5E7EB;
+  --border-soft: #EEF0F4;
+  --shadow: 0 8px 24px rgba(15,17,23,0.06), 0 2px 6px rgba(15,17,23,0.04);
+  --shadow-lg: 0 24px 60px rgba(15,17,23,0.12), 0 8px 16px rgba(15,17,23,0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-0);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text-1);
 }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, select, textarea { font-family: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+a:active { opacity: 0.75; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 999px; border: 2px solid var(--bg-0); }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+
+/* Sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--bg-3);
+  border-radius: 999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-0);
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+input[type="range"]::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-0);
+}
+
+/* Backgrounds técnicos */
+.blueprint-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(59,130,246,0.07) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Clases de variables matemáticas */
+.var-sigma { color: var(--accent); }
+.var-tau { color: var(--success); }
+.var-theta { color: var(--warning); }
+.mono { font-family: var(--font-mono); }
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.animate-in { animation: fadeIn 0.5s ease-out both; }
+.animate-in-2 { animation: fadeIn 0.5s ease-out 0.08s both; }
+.animate-in-3 { animation: fadeIn 0.5s ease-out 0.16s both; }
+
+/* ============================================================
+   Dark-chapter: overrides para contenido Tailwind en tema oscuro
+   Aplicado en ChapterShell al contenedor del main content
+   ============================================================ */
+.dark-chapter p,
+.dark-chapter li { color: var(--text-2); }
+
+.dark-chapter strong { color: var(--text-1); }
+
+.dark-chapter .text-gray-700,
+.dark-chapter .text-gray-600 { color: var(--text-2) !important; }
+
+.dark-chapter .text-gray-800 { color: var(--text-1) !important; }
+
+.dark-chapter .text-gray-500,
+.dark-chapter .text-gray-400 { color: var(--text-3) !important; }
+
+.dark-chapter .bg-gray-50,
+.dark-chapter .bg-gray-100 { background-color: var(--bg-2) !important; }
+
+.dark-chapter .bg-white { background-color: var(--bg-1) !important; }
+
+.dark-chapter .bg-green-50,
+.dark-chapter .bg-emerald-50 { background-color: var(--bg-1) !important; }
+
+.dark-chapter .bg-blue-50,
+.dark-chapter .bg-amber-50,
+.dark-chapter .bg-red-50,
+.dark-chapter .bg-purple-50,
+.dark-chapter .bg-violet-50 { background-color: var(--bg-2) !important; }
+
+.dark-chapter .border-gray-200,
+.dark-chapter .border-gray-300 { border-color: var(--border) !important; }
+
+.dark-chapter .border-green-200,
+.dark-chapter .border-green-300,
+.dark-chapter .border-green-400,
+.dark-chapter .border-emerald-200,
+.dark-chapter .border-emerald-300 { border-color: var(--part-3) !important; }
+
+.dark-chapter .border-blue-200 { border-color: var(--part-1) !important; }
+.dark-chapter .border-amber-200 { border-color: var(--part-2) !important; }
+.dark-chapter .border-red-200 { border-color: var(--danger) !important; }
+.dark-chapter .border-purple-200 { border-color: var(--part-4) !important; }
+
+.dark-chapter .text-green-700,
+.dark-chapter .text-green-800,
+.dark-chapter .text-emerald-700,
+.dark-chapter .text-emerald-800 { color: var(--part-3) !important; }
+
+.dark-chapter .text-blue-700,
+.dark-chapter .text-blue-600 { color: var(--part-1) !important; }
+
+.dark-chapter .text-amber-700,
+.dark-chapter .text-amber-600 { color: var(--part-2) !important; }
+
+.dark-chapter .text-purple-700,
+.dark-chapter .text-purple-800 { color: var(--part-4) !important; }
+
+.dark-chapter .text-red-600,
+.dark-chapter .text-red-700 { color: var(--danger) !important; }
+
+.dark-chapter .divide-gray-200 > * + * { border-color: var(--border) !important; }
+
+.dark-chapter code { background: var(--bg-2) !important; color: var(--text-1) !important; }
+
+/* Gradientes — modo oscuro */
+.dark-chapter .from-green-50  { --tw-gradient-from: var(--bg-1) !important; }
+.dark-chapter .from-amber-50  { --tw-gradient-from: var(--bg-1) !important; }
+.dark-chapter .to-emerald-50  { --tw-gradient-to: var(--bg-2) !important; }
+.dark-chapter .to-amber-50    { --tw-gradient-to: var(--bg-2) !important; }
+
+/* Accent colors para sliders */
+.dark-chapter .accent-green-600,
+.dark-chapter .accent-emerald-600 { accent-color: var(--part-3) !important; }
+
+/* Texto faltante para text-green-600 */
+.dark-chapter .text-green-600 { color: var(--part-3) !important; }
+
+/* ============================================================
+   Responsive — mobile & tablet (CSS puro, sin flash de JS)
+   ============================================================ */
+
+/* ── Landing page ── */
+@media (max-width: 1023px) {
+  .hero-grid  { grid-template-columns: 1fr !important; }
+  .hero-illus { display: none !important; }
+}
+@media (max-width: 639px) {
+  .hero-btns     { flex-direction: column !important; align-items: stretch !important; }
+  .hero-btns > * { width: 100% !important; justify-content: center !important; }
+  .stat-row      { gap: 8px !important; }
+  .stat-card     { flex: 1 !important; min-width: 0 !important; padding: 12px 10px !important; }
+  .section-pad   { padding: 48px 16px !important; }
+  .footer-pad    { padding: 32px 16px !important; }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .section-pad { padding: 60px 20px !important; }
+  .footer-pad  { padding: 36px 20px !important; }
+}
+
+
+
+

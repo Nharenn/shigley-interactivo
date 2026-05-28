@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="32" fill="#0F1117"/>
+  <rect width="192" height="192" rx="32" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="192" y2="192" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1A1D2E"/>
+      <stop offset="100%" stop-color="#0F1117"/>
+    </linearGradient>
+  </defs>
+  <!-- Gear teeth -->
+  <path d="M96 44 l6 -12 h-12 z M96 148 l6 12 h-12 z M44 96 l-12 6 v-12 z M148 96 l12 6 v-12 z
+    M61 61 l-8 -10 l-8 8 z M131 61 l8 -10 l8 8 z M61 131 l-8 10 l-8 -8 z M131 131 l8 10 l8 -8 z"
+    fill="#3B82F6" opacity="0.7"/>
+  <!-- Outer ring -->
+  <circle cx="96" cy="96" r="42" fill="none" stroke="#3B82F6" stroke-width="8" opacity="0.9"/>
+  <!-- Inner circle -->
+  <circle cx="96" cy="96" r="22" fill="#3B82F6" opacity="0.15"/>
+  <!-- S letter -->
+  <text x="96" y="109" text-anchor="middle" font-family="monospace, Courier New" font-size="44" font-weight="700" fill="#3B82F6">S</text>
+</svg>
