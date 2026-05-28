@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useBreakpoint } from '@/hooks/useIsMobile'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
-import { BookOpen, Monitor, PenLine, Key, AlertCircle, CheckCircle, ChevronDown, ChevronRight, Menu, X, ChevronLeft } from 'lucide-react'
+import { BookOpen, Monitor, PenLine, Key, AlertCircle, CheckCircle, ChevronDown, ChevronRight, Menu, X, ChevronLeft, Home } from 'lucide-react'
 
 const SECTIONS = [
   { id: '1-1', title: 'El diseño' },
@@ -188,6 +188,9 @@ export default function Cap01Page() {
       <div style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', gap: isMobile ? 8 : isTablet ? 12 : 16, padding: '0 16px', height: 56, background: 'color-mix(in oklab, var(--bg-0) 80%, transparent)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', borderBottom: '1px solid var(--border-soft)' }}>
         {(isMobile || isTablet) ? (
           <>
+            <Link href="/" aria-label="Ir al inicio" style={{ width: 44, height: 44, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8, color: 'var(--text-1)', textDecoration: 'none', flexShrink: 0 }}>
+              <Home size={18} />
+            </Link>
             <button onClick={() => setSidebarOpen(v => !v)} aria-label="Abrir índice" style={{ width: 44, height: 44, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8, border: 'none', cursor: 'pointer', background: 'transparent', color: 'var(--text-1)', flexShrink: 0 }}>
               {sidebarOpen ? <X size={19} /> : <Menu size={19} />}
             </button>

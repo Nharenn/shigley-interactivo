@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useBreakpoint } from '@/hooks/useIsMobile'
 import Link from 'next/link'
-import { BookOpen, Monitor, PenLine, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
+import { BookOpen, Monitor, PenLine, ChevronLeft, ChevronRight, Menu, X, Home } from 'lucide-react'
 import { ALL_CHAPTERS } from '@/data/chapters'
 
 const PART_COLORS: Record<number, string> = {
@@ -136,9 +136,16 @@ export default function ChapterShell({
         borderBottom: '1px solid var(--border-soft)',
       }}>
 
-        {/* Mobile/Tablet: hamburger + title */}
+        {/* Mobile/Tablet: home + hamburger + title */}
         {(isMobile || isTablet) ? (
           <>
+            <Link
+              href="/"
+              aria-label="Ir al inicio"
+              style={{ ...btn44 }}
+            >
+              <Home size={18} />
+            </Link>
             <button
               onClick={() => setSidebarOpen(v => !v)}
               aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir índice'}
