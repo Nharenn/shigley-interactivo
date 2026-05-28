@@ -103,14 +103,14 @@ export default function ChapterShell({
   )
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
-    padding: (isMobile || isTablet) ? '10px 10px' : '7px 12px',
+    padding: (isMobile || isTablet) ? '6px 8px' : '7px 12px',
     fontSize: 12.5, fontFamily: 'var(--font-mono)',
     borderRadius: 999,
     color: active ? 'white' : 'var(--text-2)',
     background: active ? color : 'transparent',
     display: 'inline-flex', alignItems: 'center', gap: 5,
     border: 'none', cursor: 'pointer', transition: 'all 0.2s',
-    minHeight: (isMobile || isTablet) ? 44 : 36,
+    minHeight: 36,
     lineHeight: 1,
   })
 
