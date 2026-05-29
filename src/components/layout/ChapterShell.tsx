@@ -136,16 +136,14 @@ export default function ChapterShell({
         borderBottom: '1px solid var(--border-soft)',
       }}>
 
-        {/* Mobile/Tablet: home + hamburger + title */}
+        {/* Home button — always visible */}
+        <Link href="/" aria-label="Ir al inicio" style={{ ...btn44 }}>
+          <Home size={18} />
+        </Link>
+
+        {/* Mobile/Tablet: hamburger + title | Desktop: breadcrumb */}
         {(isMobile || isTablet) ? (
           <>
-            <Link
-              href="/"
-              aria-label="Ir al inicio"
-              style={{ ...btn44 }}
-            >
-              <Home size={18} />
-            </Link>
             <button
               onClick={() => setSidebarOpen(v => !v)}
               aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir índice'}
@@ -165,9 +163,7 @@ export default function ChapterShell({
             </span>
           </>
         ) : (
-          /* Desktop: breadcrumb */
           <nav style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-2)', fontFamily: 'var(--font-mono)' }}>
-            <Link href="/" style={{ color: 'var(--text-2)', textDecoration: 'none' }}>Inicio</Link>
             <span style={{ color: 'var(--text-3)' }}>/</span>
             <span style={{ color: 'var(--text-3)' }}>Parte {partNum}</span>
             <span style={{ color: 'var(--text-3)' }}>/</span>
