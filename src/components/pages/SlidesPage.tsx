@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import MohrCircle from '@/components/interactive/MohrCircle'
+import dynamic from 'next/dynamic'
+const MohrCircle = dynamic(() => import('@/components/interactive/MohrCircle'), { ssr: false })
 import {
   ChevronLeft, ChevronRight, Maximize2, Minimize2, X, FileText,
   BookOpen

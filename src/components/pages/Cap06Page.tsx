@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useBreakpoint } from '@/hooks/useIsMobile'
 import Link from 'next/link'
 import { BookOpen, Monitor, PenLine, Menu, X, ChevronLeft, ChevronRight, Home } from 'lucide-react'
-import GoodmanDiagram from '@/components/interactive/GoodmanDiagram'
+import dynamic from 'next/dynamic'
+const GoodmanDiagram = dynamic(() => import('@/components/interactive/GoodmanDiagram'), { ssr: false })
 
 const SECTIONS = [
   { id: '6-1', title: 'Introducción a la fatiga en metales' },

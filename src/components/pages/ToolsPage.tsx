@@ -5,10 +5,11 @@ import { useBreakpoint } from '@/hooks/useIsMobile'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import { ArrowLeft } from 'lucide-react'
-import MohrCircle from '@/components/interactive/MohrCircle'
-import GoodmanDiagram from '@/components/interactive/GoodmanDiagram'
-import AGMACalc from '@/components/interactive/AGMACalc'
-import BeamSimulator from '@/components/interactive/BeamSimulator'
+import dynamic from 'next/dynamic'
+const MohrCircle = dynamic(() => import('@/components/interactive/MohrCircle'), { ssr: false })
+const GoodmanDiagram = dynamic(() => import('@/components/interactive/GoodmanDiagram'), { ssr: false })
+const AGMACalc = dynamic(() => import('@/components/interactive/AGMACalc'), { ssr: false })
+const BeamSimulator = dynamic(() => import('@/components/interactive/BeamSimulator'), { ssr: false })
 import { ChevronRight, X } from 'lucide-react'
 
 type FilterTab = 'todas' | 'esfuerzos' | 'fatiga' | 'materiales' | 'conversiones' | 'engranes'

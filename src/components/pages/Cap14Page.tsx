@@ -1,7 +1,8 @@
 'use client'
 import { useState } from 'react'
 import ChapterShell from '@/components/layout/ChapterShell'
-import AGMACalc from '@/components/interactive/AGMACalc'
+import dynamic from 'next/dynamic'
+const AGMACalc = dynamic(() => import('@/components/interactive/AGMACalc'), { ssr: false })
 
 const accent = 'var(--part-3)'
 

@@ -1,51 +1,32 @@
+import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { getChapter } from '@/data/chapters'
-import Cap01Page from '@/components/pages/Cap01Page'
-import Cap02Page from '@/components/pages/Cap02Page'
-import Cap03Page from '@/components/pages/Cap03Page'
-import Cap04Page from '@/components/pages/Cap04Page'
-import Cap05Page from '@/components/pages/Cap05Page'
-import Cap06Page from '@/components/pages/Cap06Page'
-import Cap07Page from '@/components/pages/Cap07Page'
-import Cap08Page from '@/components/pages/Cap08Page'
-import Cap09Page from '@/components/pages/Cap09Page'
-import Cap10Page from '@/components/pages/Cap10Page'
-import Cap11Page from '@/components/pages/Cap11Page'
-import Cap12Page from '@/components/pages/Cap12Page'
-import Cap13Page from '@/components/pages/Cap13Page'
-import Cap14Page from '@/components/pages/Cap14Page'
-import Cap15Page from '@/components/pages/Cap15Page'
-import Cap16Page from '@/components/pages/Cap16Page'
-import Cap17Page from '@/components/pages/Cap17Page'
-import Cap18Page from '@/components/pages/Cap18Page'
-import Cap19Page from '@/components/pages/Cap19Page'
-import Cap20Page from '@/components/pages/Cap20Page'
 
 interface Props {
   params: Promise<{ id: string }>
 }
 
 const PAGES: Record<number, React.ComponentType> = {
-  1: Cap01Page,
-  2: Cap02Page,
-  3: Cap03Page,
-  4: Cap04Page,
-  5: Cap05Page,
-  6: Cap06Page,
-  7: Cap07Page,
-  8: Cap08Page,
-  9: Cap09Page,
-  10: Cap10Page,
-  11: Cap11Page,
-  12: Cap12Page,
-  13: Cap13Page,
-  14: Cap14Page,
-  15: Cap15Page,
-  16: Cap16Page,
-  17: Cap17Page,
-  18: Cap18Page,
-  19: Cap19Page,
-  20: Cap20Page,
+  1:  dynamic(() => import('@/components/pages/Cap01Page'), { loading: () => null }),
+  2:  dynamic(() => import('@/components/pages/Cap02Page'), { loading: () => null }),
+  3:  dynamic(() => import('@/components/pages/Cap03Page'), { loading: () => null }),
+  4:  dynamic(() => import('@/components/pages/Cap04Page'), { loading: () => null }),
+  5:  dynamic(() => import('@/components/pages/Cap05Page'), { loading: () => null }),
+  6:  dynamic(() => import('@/components/pages/Cap06Page'), { loading: () => null }),
+  7:  dynamic(() => import('@/components/pages/Cap07Page'), { loading: () => null }),
+  8:  dynamic(() => import('@/components/pages/Cap08Page'), { loading: () => null }),
+  9:  dynamic(() => import('@/components/pages/Cap09Page'), { loading: () => null }),
+  10: dynamic(() => import('@/components/pages/Cap10Page'), { loading: () => null }),
+  11: dynamic(() => import('@/components/pages/Cap11Page'), { loading: () => null }),
+  12: dynamic(() => import('@/components/pages/Cap12Page'), { loading: () => null }),
+  13: dynamic(() => import('@/components/pages/Cap13Page'), { loading: () => null }),
+  14: dynamic(() => import('@/components/pages/Cap14Page'), { loading: () => null }),
+  15: dynamic(() => import('@/components/pages/Cap15Page'), { loading: () => null }),
+  16: dynamic(() => import('@/components/pages/Cap16Page'), { loading: () => null }),
+  17: dynamic(() => import('@/components/pages/Cap17Page'), { loading: () => null }),
+  18: dynamic(() => import('@/components/pages/Cap18Page'), { loading: () => null }),
+  19: dynamic(() => import('@/components/pages/Cap19Page'), { loading: () => null }),
+  20: dynamic(() => import('@/components/pages/Cap20Page'), { loading: () => null }),
 }
 
 export default async function ChapterPage({ params }: Props) {

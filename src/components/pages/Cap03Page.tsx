@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useBreakpoint } from '@/hooks/useIsMobile'
 import Link from 'next/link'
 import { BookOpen, Monitor, PenLine, Menu, X, ChevronLeft, ChevronRight, Home } from 'lucide-react'
-import MohrCircle from '@/components/interactive/MohrCircle'
+import dynamic from 'next/dynamic'
+const MohrCircle = dynamic(() => import('@/components/interactive/MohrCircle'), { ssr: false })
 
 const SECTIONS = [
   { id: '3-1', title: 'Equilibrio y diagramas de cuerpo libre' },

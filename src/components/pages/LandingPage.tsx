@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import { useBreakpoint } from '@/hooks/useIsMobile'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
-import { Typewriter } from '@/components/ui/typewriter'
+import dynamic from 'next/dynamic'
+const Typewriter = dynamic(() => import('@/components/ui/typewriter').then(m => ({ default: m.Typewriter })), { ssr: false, loading: () => null })
 import {
   ChevronRight, ChevronDown, BookOpen, Monitor, PenLine, Settings, Compass, Layers,
   Activity, TrendingDown, AlertTriangle, Zap, RotateCw, Toolbox, GitMerge, Loader,
