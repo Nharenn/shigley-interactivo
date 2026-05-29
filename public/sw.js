@@ -1,4 +1,4 @@
-const CACHE = 'shigley-v3'
+const CACHE = 'shigley-v4'
 
 const PRECACHE = [
   '/',
